@@ -35,7 +35,7 @@
             <ul>
                 <p>数据管理</p>
                 <li>
-                    <a href="/manageTea">管理数据</a>
+                    <a href="/manageStore">管理数据</a>
                 </li>
             </ul>
         </div>
@@ -141,20 +141,19 @@
                 dataDiv.appendChild(idParagraph);
 
                 var planetParagraph = document.createElement("p");
-                planetParagraph.innerHTML = "<strong>生产信息:</strong> " + "{{ .Production }}";
+                planetParagraph.innerHTML = "<strong>仓储信息:</strong> " + "{{ .Store }}";
                 dataDiv.appendChild(planetParagraph);
                 var Location = document.createElement("p");
-                Location.innerHTML = "<strong>生产时间:</strong> " + "{{ .ProductionTime }}";
+                Location.innerHTML = "<strong>仓储时间:</strong> " + "{{ .StoreTime }}";
                 dataDiv.appendChild(Location);
 
                 var Grower = document.createElement("p");
-                Grower.innerHTML = "<strong>生产者:</strong> " + "{{ .Producer }}";
+                Grower.innerHTML = "<strong>仓储企业:</strong> " + "{{ .Company }}";
                 dataDiv.appendChild(Grower);
 
                 var Hash = document.createElement("p");
                 Hash.innerHTML = "<strong>链上Hash:</strong> " + "{{ .Hash }}";
                 dataDiv.appendChild(Hash);
-
                 dataContainer.appendChild(dataDiv);
             }
             {{ end }}

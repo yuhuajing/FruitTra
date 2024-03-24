@@ -35,6 +35,8 @@ func Explorer() {
 	app.Post("/pickfunc", produserfunc)     //
 	app.Post("/processfunc", produserfunc)  //
 	app.Post("/prodfunc", produserfunc)     //
+	app.Post("/logisfunc", produserfunc)    //
+	app.Post("/storefunc", produserfunc)    //
 	app.Get("/approveuser", approveuser)
 	app.Post("/giveapprove", giveapprove)
 	app.Post("/removeapprove", removeapprove)
@@ -153,14 +155,14 @@ func processgetchaindata(c *fiber.Ctx) error {
 
 func storegetchaindata(c *fiber.Ctx) error {
 	resdata := database.QueryChainData()
-	return c.Render("storehaindata", fiber.Map{
+	return c.Render("storechaindata", fiber.Map{
 		"Data": resdata,
 	})
 }
 
 func logisgetchaindata(c *fiber.Ctx) error {
 	resdata := database.QueryChainData()
-	return c.Render("logishaindata", fiber.Map{
+	return c.Render("logischaindata", fiber.Map{
 		"Data": resdata,
 	})
 }
