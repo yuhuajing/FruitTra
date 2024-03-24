@@ -5,12 +5,13 @@ import "main/trace"
 type Identity string
 
 var (
-	User  Identity = "user"
-	Admin Identity = "admin"
-	Prod  Identity = "prod"
-	Logis Identity = "logis"
-	Store Identity = "store"
-	Sale  Identity = "sale"
+	User    Identity = "user"
+	Admin   Identity = "admin"
+	Prod    Identity = "prod"
+	Logis   Identity = "logis"
+	Store   Identity = "store"
+	Process Identity = "process"
+	Tea     Identity = "tea"
 )
 
 type UserInfo struct {

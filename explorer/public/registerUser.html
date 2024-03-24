@@ -104,9 +104,11 @@
                     <div class="control-group">
                         <label class="control-label"><span style="color:red;">*</span>身份：</label>
                         <div class="controls">
-                            <input type="radio" value="planet" name="identity"><label>种植商</label>
-                            <input type="radio" value="pick" name="identity"><label>采摘商</label>
+                            <input type="radio" value="tea" name="identity"><label>茶园</label>
+                            <input type="radio" value="prod" name="identity"><label>生产商</label>
                             <input type="radio" value="process" name="identity"><label>加工商</label>
+                            <input type="radio" value="logis" name="identity"><label>物流</label>
+                            <input type="radio" value="store" name="identity"><label>存储商</label>
 <!--                            <input type="radio" value="sale" name="identity"><label>分销商</label>-->
                         </div>
                     </div>
@@ -147,7 +149,7 @@
         }).then(function(response) {
             if (response.ok) {
                // alert("Register successfully!!");
-                window.location.href = '/login.html';
+                window.location.href = '/';
             } else {
                 response.json().then(function(data) {
                     var queryParams = new URLSearchParams(data).toString();

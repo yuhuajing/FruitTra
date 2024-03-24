@@ -92,9 +92,8 @@
                                                 }
                                             })
                                             // window.location.href = '/adminfuncs.html';
-                                        } else if (data.type === "planet") {
-                                            console.log("planet")
-                                            fetch('/planetfunc', {
+                                        } else if (data.type === "tea") {
+                                            fetch('/teafunc', {
                                                 method: 'POST',
                                                 body: formData
                                             }).then(function(response) {
@@ -107,12 +106,12 @@
                                                         localStorage.setItem('aphone', data.phone);
                                                         localStorage.setItem('aidentity', data.identity);
                                                         localStorage.setItem('aapprove', data.approved);
-                                                        window.location.href = "/planetadddata.html";//?"+queryParams;
+                                                        window.location.href = "/teadata.html";//?"+queryParams;
                                                     });
                                                 }
                                             })
-                                        } else if (data.type === "pick") {
-                                            fetch('/pickfunc', {
+                                        } else if (data.type === "prod") {
+                                            fetch('/prodfunc', {
                                                 method: 'POST',
                                                 body: formData
                                             }).then(function(response) {
@@ -125,7 +124,7 @@
                                                         localStorage.setItem('aphone', data.phone);
                                                         localStorage.setItem('aidentity', data.identity);
                                                         localStorage.setItem('aapprove', data.approved);
-                                                        window.location.href = "/pickadddata.html";//?"+queryParams;
+                                                        window.location.href = "/proddata.html";//?"+queryParams;
                                                     });
                                                 }
                                             })
@@ -144,6 +143,42 @@
                                                         localStorage.setItem('aidentity', data.identity);
                                                         localStorage.setItem('aapprove', data.approved);
                                                         window.location.href = "/processdddata.html";//?"+queryParams;
+                                                    });
+                                                }
+                                            })
+                                        }else if (data.type === "logis") {
+                                            fetch('/logisfunc', {
+                                                method: 'POST',
+                                                body: formData
+                                            }).then(function(response) {
+                                                if (response.ok) {
+                                                    response.json().then(function(data) {
+                                                        // var queryParams = new URLSearchParams(data).toString();
+                                                        localStorage.setItem('aname', data.username);
+                                                        localStorage.setItem('aid', data.id);
+                                                        localStorage.setItem('aemail', data.email);
+                                                        localStorage.setItem('aphone', data.phone);
+                                                        localStorage.setItem('aidentity', data.identity);
+                                                        localStorage.setItem('aapprove', data.approved);
+                                                        window.location.href = "/logisdata.html";//?"+queryParams;
+                                                    });
+                                                }
+                                            })
+                                        }else if (data.type === "store") {
+                                            fetch('/storefunc', {
+                                                method: 'POST',
+                                                body: formData
+                                            }).then(function(response) {
+                                                if (response.ok) {
+                                                    response.json().then(function(data) {
+                                                        // var queryParams = new URLSearchParams(data).toString();
+                                                        localStorage.setItem('aname', data.username);
+                                                        localStorage.setItem('aid', data.id);
+                                                        localStorage.setItem('aemail', data.email);
+                                                        localStorage.setItem('aphone', data.phone);
+                                                        localStorage.setItem('aidentity', data.identity);
+                                                        localStorage.setItem('aapprove', data.approved);
+                                                        window.location.href = "/storedata.html";//?"+queryParams;
                                                     });
                                                 }
                                             })
