@@ -48,57 +48,24 @@
             <ul>
                 <p>个人信息</p>
                 <li>
-                    <a href="/tracedata.html">个人数据</a>
+                    <a href="/teadata.html">个人数据</a>
                     <a href="/updateAdminUser.html">更新个人数据</a>
                 </li>
             </ul>
             <ul>
                 <p>数据管理</p>
                 <li>
-                    <a href="/getchaindatauser">查看数据</a>
-                    <a href="/checkdata">校验数据</a>
-                </li>
-            </ul>
-            <ul>
-                <p>投诉</p>
-                <li>
-                    <a href="/addtousu.html">投诉</a>
-                    <a href="/alltousu">查看投诉</a>
+                    <a href="/teagetchaindata">查看数据</a>
+<!--                    <a href="/checkdata">校验数据</a>-->
                 </li>
             </ul>
         </div>
-        <!--        <div class="centerboxR">-->
-        <!--            <div class="main order-pay">-->
-        <!--                <div class="body">-->
-        <!--                    <div class="order-detail">-->
-        <!--                        {{ range .Data }}-->
-        <!--                        {{ if .TeaResData }}-->
-        <!--                        <div class="data-container">-->
-        <!--                            <p><strong>追溯码:</strong> {{ .TeaResData.Id }}</p>-->
-        <!--                            <p><strong>种植信息:</strong> {{ .TeaResData.Planet }}</p>-->
-        <!--                            <p><strong>基地位置:</strong> {{ .TeaResData.Location }}</p>-->
-        <!--                            <p><strong>种植者:</strong> {{ .TeaResData.Grower }}</p>-->
-        <!--                            <p><strong>品种:</strong> {{ .TeaResData.Species }}</p>-->
-        <!--                            <p><strong>资质证书:</strong> {{ .TeaResData.Quarantine }}</p>-->
-        <!--                            <p><strong>包装示例:</strong> {{ .TeaResData.Packages }}</p>-->
-        <!--                            <p><strong>采摘数据:</strong> {{ .TeaResData.Pick }}</p>-->
-        <!--                            <p><strong>采摘时间:</strong> {{ .TeaResData.PickTime }}</p>-->
-        <!--                            <p><strong>采摘人:</strong> {{ .TeaResData.Picker }}</p>-->
-        <!--                            <p><strong>链上Hash:</strong> {{ .TeaResData.Hash }}</p>-->
-        <!--                        </div>-->
-        <!--                        {{ else }}-->
-        <!--                        {{ end }}-->
-        <!--                        {{ end }}-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-
         <div class="centerboxR">
             <div class="main order-pay">
                 <div class="body">
                     <div class="order-detail">
                         <select id="selectData" onchange="showSelectedData()">
-                            <option value="">选择追溯数据</option>
+                            <option value="">选择茶园追溯数码</option>
                             {{ range .Data }}
                             {{ if .TeaResData }}
                             <option value="{{ .TeaResData.Id }}">{{ .TeaResData.Id }}</option>

@@ -48,22 +48,15 @@
             <ul>
                 <p>个人信息</p>
                 <li>
-                    <a href="/tracedata.html">个人数据</a>
+                    <a href="/storedata.html">个人数据</a>
                     <a href="/updateAdminUser.html">更新个人数据</a>
                 </li>
             </ul>
             <ul>
                 <p>数据管理</p>
                 <li>
-                    <a href="/getchaindatauser">查看数据</a>
+                    <a href="/storegetchaindata">查看数据</a>
                     <a href="/checkdata">校验数据</a>
-                </li>
-            </ul>
-            <ul>
-                <p>投诉</p>
-                <li>
-                    <a href="/addtousu.html">投诉</a>
-                    <a href="/alltousu">查看投诉</a>
                 </li>
             </ul>
         </div>
@@ -137,39 +130,22 @@
             dataDiv.classList.add("data-container");
 
             var idParagraph = document.createElement("p");
-            idParagraph.innerHTML = "<strong>追溯码:</strong> " + "{{ .TeaResData.Id }}";
+            idParagraph.innerHTML = "<strong>追溯码:</strong> " + "{{ .StorageInfo.Id }}";
             dataDiv.appendChild(idParagraph);
 
             var planetParagraph = document.createElement("p");
-            planetParagraph.innerHTML = "<strong>种植信息:</strong> " + "{{ .TeaResData.Planet }}";
+            planetParagraph.innerHTML = "<strong>仓储信息:</strong> " + "{{ .StorageInfo.Store }}";
             dataDiv.appendChild(planetParagraph);
             var Location = document.createElement("p");
-            Location.innerHTML = "<strong>基地信息:</strong> " + "{{ .TeaResData.Location }}";
+            Location.innerHTML = "<strong>仓储时间:</strong> " + "{{ .StorageInfo.StoreTime }}";
             dataDiv.appendChild(Location);
 
             var Grower = document.createElement("p");
-            Grower.innerHTML = "<strong>种植者:</strong> " + "{{ .TeaResData.Grower }}";
+            Grower.innerHTML = "<strong>仓储企业:</strong> " + "{{ .StorageInfo.Company }}";
             dataDiv.appendChild(Grower);
-            var Species = document.createElement("p");
-            Species.innerHTML = "<strong>品种:</strong> " + "{{ .TeaResData.Species }}";
-            dataDiv.appendChild(Species);
-            var Quarantine = document.createElement("p");
-            Quarantine.innerHTML = "<strong>资质证书:</strong> " + "{{ .TeaResData.Quarantine }}";
-            dataDiv.appendChild(Quarantine);
-            var Packages = document.createElement("p");
-            Packages.innerHTML = "<strong>包装示例:</strong> " + "{{ .TeaResData.Packages }}";
-            dataDiv.appendChild(Packages);
-            var Pick = document.createElement("p");
-            Pick.innerHTML = "<strong>采摘数据:</strong> " + "{{ .TeaResData.Pick }}";
-            dataDiv.appendChild(Pick);
-            var PickTime = document.createElement("p");
-            PickTime.innerHTML = "<strong>采摘时间:</strong> " + "{{ .TeaResData.PickTime }}";
-            dataDiv.appendChild(PickTime);
-            var Picker = document.createElement("p");
-            Picker.innerHTML = "<strong>采摘人:</strong> " + "{{ .TeaResData.Picker }}";
-            dataDiv.appendChild(Picker);
+
             var Hash = document.createElement("p");
-            Hash.innerHTML = "<strong>链上Hash:</strong> " + "{{ .TeaResData.Hash }}";
+            Hash.innerHTML = "<strong>链上Hash:</strong> " + "{{ .StorageInfo.Hash }}";
             dataDiv.appendChild(Hash);
             dataContainer.appendChild(dataDiv);
         }

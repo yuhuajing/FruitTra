@@ -47,6 +47,18 @@ func Explorer() {
 
 	app.Get("/getchaindata", getchaindata)
 	app.Get("/getchaindatauser", getchaindatauser)
+
+	app.Get("/teagetchaindata", teagetchaindata)
+	app.Get("/prodgetchaindata", prodgetchaindata)
+	app.Get("/processgetchaindata", processgetchaindata)
+	app.Get("/storegetchaindata", storegetchaindata)
+	app.Get("/logisgetchaindata", logisgetchaindata)
+	app.Post("/delTea", delTea)
+	app.Post("/delProd", delProd)
+	app.Post("/delProcess", delProcess)
+	app.Post("/delStore", delStore)
+	app.Post("/delLogis", delLogis)
+
 	app.Post("/delchaindata", delchaindata)
 
 	app.Get("/gettxbyhash", gettxbyhash)
@@ -57,13 +69,48 @@ func Explorer() {
 	//app.Use(jwtware.New(jwtware.Config{
 	//	SigningKey: jwtware.SigningKey{Key: []byte("secret")},
 	//}))
-
-	log.Fatal(app.Listen(":3005"))
+	//
+	log.Fatal(app.Listen(":3004"))
 }
 
 type Tousu struct {
 	User  string `json:"user"`
 	Tousu string `json:"tousu"`
+}
+
+func teagetchaindata(c *fiber.Ctx) error {
+	resdata := database.QueryChainData()
+	return c.Render("teachaindata", fiber.Map{
+		"Data": resdata,
+	})
+}
+
+func prodgetchaindata(c *fiber.Ctx) error {
+	resdata := database.QueryChainData()
+	return c.Render("prodchaindata", fiber.Map{
+		"Data": resdata,
+	})
+}
+
+func processgetchaindata(c *fiber.Ctx) error {
+	resdata := database.QueryChainData()
+	return c.Render("processchaindata", fiber.Map{
+		"Data": resdata,
+	})
+}
+
+func storegetchaindata(c *fiber.Ctx) error {
+	resdata := database.QueryChainData()
+	return c.Render("storehaindata", fiber.Map{
+		"Data": resdata,
+	})
+}
+
+func logisgetchaindata(c *fiber.Ctx) error {
+	resdata := database.QueryChainData()
+	return c.Render("logishaindata", fiber.Map{
+		"Data": resdata,
+	})
 }
 
 func getchaindatauser(c *fiber.Ctx) error {
@@ -72,6 +119,11 @@ func getchaindatauser(c *fiber.Ctx) error {
 		"Data": resdata,
 	})
 }
+
+//func getchaindatauser(c *fiber.Ctx) error {
+//	resdata := database.QueryChainData()
+//	return c.Status(200).JSON(resdata)
+//}
 
 func checkdata(c *fiber.Ctx) error {
 	resdata := database.QueryChainData()
@@ -244,6 +296,67 @@ func delchaindata(c *fiber.Ctx) error {
 func removeapprove(c *fiber.Ctx) error {
 	id := c.Query("id")
 	err := database.DeleteUserInfo(id)
+	if err != nil {
+		return c.Status(400).JSON(DataResponse{
+			Error:   err.Error(),
+			Success: false,
+			Data:    "",
+		})
+	}
+	return c.SendStatus(200)
+}
+
+func delLogis(c *fiber.Ctx) error {
+	id := c.Query("id")
+	err := database.DeleteLogis(id)
+	if err != nil {
+		return c.Status(400).JSON(DataResponse{
+			Error:   err.Error(),
+			Success: false,
+			Data:    "",
+		})
+	}
+	return c.SendStatus(200)
+}
+func delStore(c *fiber.Ctx) error {
+	id := c.Query("id")
+	err := database.DeleteStore(id)
+	if err != nil {
+		return c.Status(400).JSON(DataResponse{
+			Error:   err.Error(),
+			Success: false,
+			Data:    "",
+		})
+	}
+	return c.SendStatus(200)
+}
+func delProcess(c *fiber.Ctx) error {
+	id := c.Query("id")
+	err := database.DeleteProcess(id)
+	if err != nil {
+		return c.Status(400).JSON(DataResponse{
+			Error:   err.Error(),
+			Success: false,
+			Data:    "",
+		})
+	}
+	return c.SendStatus(200)
+}
+func delProd(c *fiber.Ctx) error {
+	id := c.Query("id")
+	err := database.DeleteProd(id)
+	if err != nil {
+		return c.Status(400).JSON(DataResponse{
+			Error:   err.Error(),
+			Success: false,
+			Data:    "",
+		})
+	}
+	return c.SendStatus(200)
+}
+func delTea(c *fiber.Ctx) error {
+	id := c.Query("id")
+	err := database.DeleteTea(id)
 	if err != nil {
 		return c.Status(400).JSON(DataResponse{
 			Error:   err.Error(),

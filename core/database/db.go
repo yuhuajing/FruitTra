@@ -176,6 +176,7 @@ func QueryChainData() []tabletypes.DataRes {
 		return alldata
 	}
 	if len(idres) != 0 {
+		fmt.Println(123)
 		for _, data := range idres {
 			res := data.(*tabletypes.TeaResData)
 			ids = append(ids, res.Id)
@@ -190,13 +191,14 @@ func QueryChainData() []tabletypes.DataRes {
 		logis := QueryLogisByIdChainData(id)
 		alldata = append(alldata, tabletypes.DataRes{tea, prod, process, store, logis})
 	}
+	fmt.Println(alldata)
 	return alldata
 }
 func QueryTeaByIdChainData(id string) *tabletypes.TeaResData {
 	filter := bson.M{"id": id}
 	opts := options.Find().SetLimit(1)
 	var res *tabletypes.TeaResData
-	err, idres := GetDocuments(config.DbcollectionProdInfo, filter, &tabletypes.TeaResData{}, opts)
+	err, idres := GetDocuments(config.DbcollectionTeaInfo, filter, &tabletypes.TeaResData{}, opts)
 	if err != nil {
 		fmt.Println(err)
 		return res
@@ -225,7 +227,7 @@ func QueryProcessByIdChainData(id string) *tabletypes.ProcessInfo {
 	filter := bson.M{"id": id}
 	opts := options.Find().SetLimit(1)
 	var res *tabletypes.ProcessInfo
-	err, idres := GetDocuments(config.DbcollectionProdInfo, filter, &tabletypes.ProcessInfo{}, opts)
+	err, idres := GetDocuments(config.DbcollectionProcessInfo, filter, &tabletypes.ProcessInfo{}, opts)
 	if err != nil {
 		fmt.Println(err)
 		return res
@@ -240,7 +242,7 @@ func QueryStoreByIdChainData(id string) *tabletypes.StorageInfo {
 	filter := bson.M{"id": id}
 	opts := options.Find().SetLimit(1)
 	var res *tabletypes.StorageInfo
-	err, idres := GetDocuments(config.DbcollectionProdInfo, filter, &tabletypes.StorageInfo{}, opts)
+	err, idres := GetDocuments(config.DbcollectionStoreInfo, filter, &tabletypes.StorageInfo{}, opts)
 	if err != nil {
 		fmt.Println(err)
 		return res
@@ -255,7 +257,7 @@ func QueryLogisByIdChainData(id string) *tabletypes.LogisInfo {
 	filter := bson.M{"id": id}
 	opts := options.Find().SetLimit(1)
 	var res *tabletypes.LogisInfo
-	err, idres := GetDocuments(config.DbcollectionProdInfo, filter, &tabletypes.LogisInfo{}, opts)
+	err, idres := GetDocuments(config.DbcollectionLogisInfo, filter, &tabletypes.LogisInfo{}, opts)
 	if err != nil {
 		fmt.Println(err)
 		return res
@@ -322,6 +324,91 @@ func DeleteUserInfo(id string) error {
 	}
 	if len(idres) != 0 {
 		collection := dbconn.GetCollection(config.DbcollectionUserInfo)
+		_, err := collection.DeleteOne(context.Background(), filter)
+		if err != nil {
+			return fmt.Errorf("DeleteUserInfoError: %v", err)
+		}
+		return nil
+	}
+	return fmt.Errorf("Delete non-exist user.")
+}
+
+func DeleteTea(id string) error {
+	filter := bson.M{"_id": id}
+	err, idres := GetDocuments(config.DbcollectionTeaInfo, filter, &tabletypes.TeaResData{})
+	if err != nil {
+		return fmt.Errorf("QueryUserInfo: %v", err)
+	}
+	if len(idres) != 0 {
+		collection := dbconn.GetCollection(config.DbcollectionTeaInfo)
+		_, err := collection.DeleteOne(context.Background(), filter)
+		if err != nil {
+			return fmt.Errorf("DeleteUserInfoError: %v", err)
+		}
+		return nil
+	}
+	return fmt.Errorf("Delete non-exist user.")
+}
+
+func DeleteLogis(id string) error {
+	filter := bson.M{"_id": id}
+	err, idres := GetDocuments(config.DbcollectionLogisInfo, filter, &tabletypes.LogisInfo{})
+	if err != nil {
+		return fmt.Errorf("QueryUserInfo: %v", err)
+	}
+	if len(idres) != 0 {
+		collection := dbconn.GetCollection(config.DbcollectionLogisInfo)
+		_, err := collection.DeleteOne(context.Background(), filter)
+		if err != nil {
+			return fmt.Errorf("DeleteUserInfoError: %v", err)
+		}
+		return nil
+	}
+	return fmt.Errorf("Delete non-exist user.")
+}
+
+func DeleteStore(id string) error {
+	filter := bson.M{"_id": id}
+	err, idres := GetDocuments(config.DbcollectionStoreInfo, filter, &tabletypes.StorageInfo{})
+	if err != nil {
+		return fmt.Errorf("QueryUserInfo: %v", err)
+	}
+	if len(idres) != 0 {
+		collection := dbconn.GetCollection(config.DbcollectionStoreInfo)
+		_, err := collection.DeleteOne(context.Background(), filter)
+		if err != nil {
+			return fmt.Errorf("DeleteUserInfoError: %v", err)
+		}
+		return nil
+	}
+	return fmt.Errorf("Delete non-exist user.")
+}
+
+func DeleteProcess(id string) error {
+	filter := bson.M{"_id": id}
+	err, idres := GetDocuments(config.DbcollectionProcessInfo, filter, &tabletypes.ProcessInfo{})
+	if err != nil {
+		return fmt.Errorf("QueryUserInfo: %v", err)
+	}
+	if len(idres) != 0 {
+		collection := dbconn.GetCollection(config.DbcollectionProcessInfo)
+		_, err := collection.DeleteOne(context.Background(), filter)
+		if err != nil {
+			return fmt.Errorf("DeleteUserInfoError: %v", err)
+		}
+		return nil
+	}
+	return fmt.Errorf("Delete non-exist user.")
+}
+
+func DeleteProd(id string) error {
+	filter := bson.M{"_id": id}
+	err, idres := GetDocuments(config.DbcollectionProdInfo, filter, &tabletypes.ProductionInfo{})
+	if err != nil {
+		return fmt.Errorf("QueryUserInfo: %v", err)
+	}
+	if len(idres) != 0 {
+		collection := dbconn.GetCollection(config.DbcollectionProdInfo)
 		_, err := collection.DeleteOne(context.Background(), filter)
 		if err != nil {
 			return fmt.Errorf("DeleteUserInfoError: %v", err)

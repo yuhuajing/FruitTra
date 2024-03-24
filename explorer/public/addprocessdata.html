@@ -140,7 +140,7 @@
                 response.json().then(function(data) {
                     var hash = data.data;
                     alert("On-Chain successfully with hash: " + hash);
-                    window.location.href = '/getchaindatauser';
+                    window.location.href = '/processgetchaindata';
                 });
             } else {
                 alert("On-Chain failed, 链拥堵，请稍后再试！！");
