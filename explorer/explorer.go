@@ -9,6 +9,7 @@ import (
 	"log"
 	"main/common/tabletypes"
 	"main/core/database"
+	"main/core/sendtx"
 	txdata2 "main/core/txdata"
 	"time"
 )
@@ -45,6 +46,7 @@ func Explorer() {
 	app.Get("/getchaindata", getchaindata)
 	app.Get("/getchaindatauser", getchaindatauser)
 	app.Post("/delchaindata", delchaindata)
+
 	app.Get("/gettxbyhash", gettxbyhash)
 
 	app.Get("/checkdata", checkdata)
@@ -101,20 +103,9 @@ type ecodatas struct {
 }
 
 func checktx(c *fiber.Ctx) error {
-	//id := c.Query("id")
-	//err, traceid, batchid, prodinfo, logisinfo, soreinfo, salestring := sendtx.ReadDataByID(id)
-	//if err != nil {
-	//	return c.SendStatus(400)
-	//}
-	//return c.Status(200).JSON(ecodatas{
-	//	Traceid:    traceid,
-	//	Batchid:    batchid,
-	//	Prodinfo:   prodinfo,
-	//	Logisinfo:  logisinfo,
-	//	Soreinfo:   soreinfo,
-	//	Salestring: salestring,
-	//})
-	return c.SendStatus(200)
+	id := c.Query("id")
+	data := sendtx.ReadDataByID(id)
+	return c.Status(200).JSON(data)
 }
 
 type txdata struct {
