@@ -34,6 +34,7 @@ func Explorer() {
 	app.Post("/planetfunc", produserfunc)   //
 	app.Post("/pickfunc", produserfunc)     //
 	app.Post("/processfunc", produserfunc)  //
+	app.Post("/prodfunc", produserfunc)     //
 	app.Get("/approveuser", approveuser)
 	app.Post("/giveapprove", giveapprove)
 	app.Post("/removeapprove", removeapprove)

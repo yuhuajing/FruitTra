@@ -75,7 +75,7 @@ func InsertInfoProd(id string, processa string, processtime string, processer st
 		Company:        company,
 		Hash:           txhash,
 	}
-	err := InsertDocument(config.DbcollectionTeaInfo, res)
+	err := InsertDocument(config.DbcollectionProdInfo, res)
 	if err != nil {
 		return fmt.Errorf("InsertProdInfo:err in inserting"), ""
 	}
@@ -92,7 +92,7 @@ func InsertInfoProcess(id string, processa string, processtime string, processer
 		Company:     company,
 		Hash:        txhash,
 	}
-	err := InsertDocument(config.DbcollectionTeaInfo, res)
+	err := InsertDocument(config.DbcollectionProcessInfo, res)
 	if err != nil {
 		return fmt.Errorf("InsertProdInfo:err in inserting"), ""
 	}
@@ -108,7 +108,7 @@ func InsertInfoStore(id string, store string, storetime string, company string) 
 		Company:   company,
 		Hash:      txhash,
 	}
-	err := InsertDocument(config.DbcollectionTeaInfo, res)
+	err := InsertDocument(config.DbcollectionStoreInfo, res)
 	if err != nil {
 		return fmt.Errorf("InsertProdInfo:err in inserting"), ""
 	}
@@ -126,7 +126,7 @@ func InsertInfoLogis(id string, path string, logisway string, logistime string, 
 		Company:   company,
 		Hash:      txhash,
 	}
-	err := InsertDocument(config.DbcollectionTeaInfo, res)
+	err := InsertDocument(config.DbcollectionLogisInfo, res)
 	if err != nil {
 		return fmt.Errorf("InsertProdInfo:err in inserting"), ""
 	}
