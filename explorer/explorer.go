@@ -363,6 +363,8 @@ func delLogis(c *fiber.Ctx) error {
 }
 func delStore(c *fiber.Ctx) error {
 	id := c.Query("id")
+	fmt.Println(666)
+	fmt.Println(id)
 	err := database.DeleteStore(id)
 	if err != nil {
 		return c.Status(400).JSON(DataResponse{

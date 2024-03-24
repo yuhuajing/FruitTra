@@ -432,7 +432,7 @@ func DeleteUserInfo(id string) error {
 }
 
 func DeleteTea(id string) error {
-	filter := bson.M{"_id": id}
+	filter := bson.M{"id": id}
 	err, idres := GetDocuments(config.DbcollectionTeaInfo, filter, &tabletypes.TeaResData{})
 	if err != nil {
 		return fmt.Errorf("QueryUserInfo: %v", err)
@@ -449,7 +449,7 @@ func DeleteTea(id string) error {
 }
 
 func DeleteLogis(id string) error {
-	filter := bson.M{"_id": id}
+	filter := bson.M{"id": id}
 	err, idres := GetDocuments(config.DbcollectionLogisInfo, filter, &tabletypes.LogisInfo{})
 	if err != nil {
 		return fmt.Errorf("QueryUserInfo: %v", err)
@@ -466,7 +466,7 @@ func DeleteLogis(id string) error {
 }
 
 func DeleteStore(id string) error {
-	filter := bson.M{"_id": id}
+	filter := bson.M{"id": id}
 	err, idres := GetDocuments(config.DbcollectionStoreInfo, filter, &tabletypes.StorageInfo{})
 	if err != nil {
 		return fmt.Errorf("QueryUserInfo: %v", err)
@@ -483,7 +483,7 @@ func DeleteStore(id string) error {
 }
 
 func DeleteProcess(id string) error {
-	filter := bson.M{"_id": id}
+	filter := bson.M{"id": id}
 	err, idres := GetDocuments(config.DbcollectionProcessInfo, filter, &tabletypes.ProcessInfo{})
 	if err != nil {
 		return fmt.Errorf("QueryUserInfo: %v", err)
@@ -500,7 +500,7 @@ func DeleteProcess(id string) error {
 }
 
 func DeleteProd(id string) error {
-	filter := bson.M{"_id": id}
+	filter := bson.M{"id": id}
 	err, idres := GetDocuments(config.DbcollectionProdInfo, filter, &tabletypes.ProductionInfo{})
 	if err != nil {
 		return fmt.Errorf("QueryUserInfo: %v", err)
