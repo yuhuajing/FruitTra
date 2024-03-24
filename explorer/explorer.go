@@ -28,6 +28,8 @@ func Explorer() {
 	app.Post("/login", deallogin)           //登录分支
 	app.Post("/registerUser", registerUser) //注册分支
 	app.Post("/adminfunc", manageuser)      //管理员界面
+	app.Post("/teafunc", managetea)         //管理员界面
+
 	app.Post("/produserfunc", produserfunc) //
 	app.Post("/planetfunc", produserfunc)   //
 	app.Post("/pickfunc", produserfunc)     //
@@ -164,6 +166,32 @@ func produserfunc(c *fiber.Ctx) error {
 func manageuser(c *fiber.Ctx) error {
 	payload := &tabletypes.Info{}
 
+	if err := c.BodyParser(payload); err != nil {
+		return c.Status(400).JSON(DataResponse{
+			Error:   err.Error(),
+			Success: false,
+			Data:    "",
+		})
+	}
+	err, resdata := database.QueryUserInfoByName(payload.Username)
+	if err != nil {
+		return c.Status(400).JSON(DataResponse{
+			Error:   err.Error(),
+			Success: false,
+		})
+	}
+	return c.Status(200).JSON(tabletypes.UserInfo{
+		Username: resdata.Username,
+		Id:       resdata.Id,
+		Email:    resdata.Email,
+		Phone:    resdata.Phone,
+		Identity: resdata.Identity,
+		Approved: resdata.Approved,
+	})
+}
+
+func managetea(c *fiber.Ctx) error {
+	payload := &tabletypes.Info{}
 	if err := c.BodyParser(payload); err != nil {
 		return c.Status(400).JSON(DataResponse{
 			Error:   err.Error(),
