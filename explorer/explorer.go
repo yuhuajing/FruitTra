@@ -129,11 +129,6 @@ func manageTea(c *fiber.Ctx) error {
 	})
 }
 
-type Tousu struct {
-	User  string `json:"user"`
-	Tousu string `json:"tousu"`
-}
-
 func teagetchaindata(c *fiber.Ctx) error {
 	resdata := database.QueryChainData()
 	return c.Render("teachaindata", fiber.Map{
@@ -199,17 +194,6 @@ func approveuser(c *fiber.Ctx) error {
 	return c.Render("approveuser", fiber.Map{
 		"Data": resdata,
 	})
-}
-
-type ecodatas struct {
-	Traceid    string `json:"traceid"`
-	Batchid    string `json:"batchid"`
-	Prodinfo   string `json:"prodinfo"`
-	Logisinfo  string `json:"logisinfo"`
-	Soreinfo   string `json:"soreinfo"`
-	Salestring string `json:"salestring"`
-	//Logisinfo  string `json:"logisinfo"`
-
 }
 
 func checktx(c *fiber.Ctx) error {
