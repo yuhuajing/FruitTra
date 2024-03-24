@@ -58,19 +58,54 @@ func Explorer() {
 	app.Post("/delProcess", delProcess)
 	app.Post("/delStore", delStore)
 	app.Post("/delLogis", delLogis)
-
 	app.Post("/delchaindata", delchaindata)
 
 	app.Get("/gettxbyhash", gettxbyhash)
-
 	app.Get("/checkdata", checkdata)
 	app.Get("/checktx", checktx)
+
+	app.Get("/manageTea", manageTea)
+	app.Get("/manageProd", manageProd)
+	app.Get("/manageProcess", manageProcess)
+	app.Get("/manageLogis", manageLogis)
+	app.Get("/manageStore", manageStore)
 
 	//app.Use(jwtware.New(jwtware.Config{
 	//	SigningKey: jwtware.SigningKey{Key: []byte("secret")},
 	//}))
 	//
 	log.Fatal(app.Listen(":3004"))
+}
+func manageProcess(c *fiber.Ctx) error {
+	resdata := database.QueryProcessChainData()
+	return c.Render("manageprocesschaindata", fiber.Map{
+		"Data": resdata,
+	})
+}
+func manageLogis(c *fiber.Ctx) error {
+	resdata := database.QueryLogisChainData()
+	return c.Render("managelogischaindata", fiber.Map{
+		"Data": resdata,
+	})
+}
+func manageStore(c *fiber.Ctx) error {
+	resdata := database.QueryStoreChainData()
+	return c.Render("managestorechaindata", fiber.Map{
+		"Data": resdata,
+	})
+}
+
+func manageProd(c *fiber.Ctx) error {
+	resdata := database.QueryProdChainData()
+	return c.Render("manageprodchaindata", fiber.Map{
+		"Data": resdata,
+	})
+}
+func manageTea(c *fiber.Ctx) error {
+	resdata := database.QueryTeaChainData()
+	return c.Render("manageteachaindata", fiber.Map{
+		"Data": resdata,
+	})
 }
 
 type Tousu struct {

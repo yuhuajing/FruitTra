@@ -166,6 +166,92 @@ func QueryAllUserInfo() (error, []*tabletypes.UserInfo) {
 	return nil, nil
 }
 
+func QueryTeaChainData() []*tabletypes.TeaResData {
+	filter := bson.M{}
+	alldata := make([]*tabletypes.TeaResData, 0)
+	err, idres := GetDocuments(config.DbcollectionTeaInfo, filter, &tabletypes.TeaResData{})
+	if err != nil {
+		fmt.Println(err)
+		return alldata
+	}
+	if len(idres) != 0 {
+		fmt.Println(123)
+		for _, data := range idres {
+			res := data.(*tabletypes.TeaResData)
+			alldata = append(alldata, res)
+		}
+	}
+	return alldata
+}
+func QueryProdChainData() []*tabletypes.ProductionInfo {
+	filter := bson.M{}
+	alldata := make([]*tabletypes.ProductionInfo, 0)
+	err, idres := GetDocuments(config.DbcollectionProdInfo, filter, &tabletypes.ProductionInfo{})
+	if err != nil {
+		fmt.Println(err)
+		return alldata
+	}
+	if len(idres) != 0 {
+		fmt.Println(123)
+		for _, data := range idres {
+			res := data.(*tabletypes.ProductionInfo)
+			alldata = append(alldata, res)
+		}
+	}
+	return alldata
+}
+func QueryProcessChainData() []*tabletypes.ProcessInfo {
+	filter := bson.M{}
+	alldata := make([]*tabletypes.ProcessInfo, 0)
+	err, idres := GetDocuments(config.DbcollectionProcessInfo, filter, &tabletypes.ProcessInfo{})
+	if err != nil {
+		fmt.Println(err)
+		return alldata
+	}
+	if len(idres) != 0 {
+		fmt.Println(123)
+		for _, data := range idres {
+			res := data.(*tabletypes.ProcessInfo)
+			alldata = append(alldata, res)
+		}
+	}
+	return alldata
+}
+func QueryStoreChainData() []*tabletypes.StorageInfo {
+	filter := bson.M{}
+	alldata := make([]*tabletypes.StorageInfo, 0)
+	err, idres := GetDocuments(config.DbcollectionStoreInfo, filter, &tabletypes.StorageInfo{})
+	if err != nil {
+		fmt.Println(err)
+		return alldata
+	}
+	if len(idres) != 0 {
+		fmt.Println(123)
+		for _, data := range idres {
+			res := data.(*tabletypes.StorageInfo)
+			alldata = append(alldata, res)
+		}
+	}
+	return alldata
+}
+func QueryLogisChainData() []*tabletypes.LogisInfo {
+	filter := bson.M{}
+	alldata := make([]*tabletypes.LogisInfo, 0)
+	err, idres := GetDocuments(config.DbcollectionLogisInfo, filter, &tabletypes.LogisInfo{})
+	if err != nil {
+		fmt.Println(err)
+		return alldata
+	}
+	if len(idres) != 0 {
+		fmt.Println(123)
+		for _, data := range idres {
+			res := data.(*tabletypes.LogisInfo)
+			alldata = append(alldata, res)
+		}
+	}
+	return alldata
+}
+
 func QueryChainData() []tabletypes.DataRes {
 	filter := bson.M{}
 	ids := make([]string, 0)
