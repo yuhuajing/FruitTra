@@ -280,6 +280,18 @@ func QueryChainData() []tabletypes.DataRes {
 	fmt.Println(alldata)
 	return alldata
 }
+
+func QueryChainDataById(id string) []tabletypes.DataRes {
+	alldata := make([]tabletypes.DataRes, 0)
+	tea := QueryTeaByIdChainData(id)
+	prod := QueryProdByIdChainData(id)
+	process := QueryProcessByIdChainData(id)
+	store := QueryStoreByIdChainData(id)
+	logis := QueryLogisByIdChainData(id)
+	alldata = append(alldata, tabletypes.DataRes{tea, prod, process, store, logis})
+	return alldata
+}
+
 func QueryTeaByIdChainData(id string) *tabletypes.TeaResData {
 	filter := bson.M{"id": id}
 	opts := options.Find().SetLimit(1)

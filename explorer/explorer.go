@@ -69,12 +69,33 @@ func Explorer() {
 	app.Get("/manageProcess", manageProcess)
 	app.Get("/manageLogis", manageLogis)
 	app.Get("/manageStore", manageStore)
+	app.Post("/querydata", querydata)
 
 	//app.Use(jwtware.New(jwtware.Config{
 	//	SigningKey: jwtware.SigningKey{Key: []byte("secret")},
 	//}))
 	//
 	log.Fatal(app.Listen(":3004"))
+}
+
+type query struct {
+	Id string `json:"id" gorm:"primary_key"`
+}
+
+func querydata(c *fiber.Ctx) error {
+	payload := &query{}
+	if err := c.BodyParser(payload); err != nil {
+		return c.Status(400).JSON(DataResponse{
+			Error:   err.Error(),
+			Success: false,
+			Data:    "",
+		})
+	}
+
+	userinfo := database.QueryChainDataById(payload.Id)
+	return c.Render("chaindatabyId", fiber.Map{
+		"Data": userinfo,
+	})
 }
 func manageProcess(c *fiber.Ctx) error {
 	resdata := database.QueryProcessChainData()

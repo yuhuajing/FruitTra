@@ -124,7 +124,7 @@
 
         // 寻找选中的追溯数据并展示
         {{ range .Data }}
-        {{ if .TeaResData }}
+        {{ if .StorageInfo }}
         if (selectedId === "{{ .TeaResData.Id }}") {
             var dataDiv = document.createElement("div");
             dataDiv.classList.add("data-container");

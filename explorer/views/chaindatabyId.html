@@ -45,53 +45,13 @@
 <div class="cneterbox">
     <div class="main">
         <div class="centerboxL">
-            <ul>
-                <p>个人信息</p>
-                <li>
-                    <a href="/processdddata.html">个人数据</a>
-                    <a href="/updateAdminUser.html">更新个人数据</a>
-                </li>
-            </ul>
-            <ul>
-                <p>数据管理</p>
-                <li>
-                    <a href="/processgetchaindata">查看数据</a>
-<!--                    <a href="/checkdata">校验数据</a>-->
-                </li>
-            </ul>
         </div>
-        <!--        <div class="centerboxR">-->
-        <!--            <div class="main order-pay">-->
-        <!--                <div class="body">-->
-        <!--                    <div class="order-detail">-->
-        <!--                        {{ range .Data }}-->
-        <!--                        {{ if .TeaResData }}-->
-        <!--                        <div class="data-container">-->
-        <!--                            <p><strong>追溯码:</strong> {{ .TeaResData.Id }}</p>-->
-        <!--                            <p><strong>种植信息:</strong> {{ .TeaResData.Planet }}</p>-->
-        <!--                            <p><strong>基地位置:</strong> {{ .TeaResData.Location }}</p>-->
-        <!--                            <p><strong>种植者:</strong> {{ .TeaResData.Grower }}</p>-->
-        <!--                            <p><strong>品种:</strong> {{ .TeaResData.Species }}</p>-->
-        <!--                            <p><strong>资质证书:</strong> {{ .TeaResData.Quarantine }}</p>-->
-        <!--                            <p><strong>包装示例:</strong> {{ .TeaResData.Packages }}</p>-->
-        <!--                            <p><strong>采摘数据:</strong> {{ .TeaResData.Pick }}</p>-->
-        <!--                            <p><strong>采摘时间:</strong> {{ .TeaResData.PickTime }}</p>-->
-        <!--                            <p><strong>采摘人:</strong> {{ .TeaResData.Picker }}</p>-->
-        <!--                            <p><strong>链上Hash:</strong> {{ .TeaResData.Hash }}</p>-->
-        <!--                        </div>-->
-        <!--                        {{ else }}-->
-        <!--                        {{ end }}-->
-        <!--                        {{ end }}-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-
         <div class="centerboxR">
             <div class="main order-pay">
                 <div class="body">
                     <div class="order-detail">
                         <select id="selectData" onchange="showSelectedData()">
-                            <option value="">选择加工追溯数据</option>
+                            <option value="">选择茶园追溯数码</option>
                             {{ range .Data }}
                             {{ if .TeaResData }}
                             <option value="{{ .TeaResData.Id }}">{{ .TeaResData.Id }}</option>
@@ -124,6 +84,79 @@
 
         // 寻找选中的追溯数据并展示
         {{ range .Data }}
+        {{ if .TeaResData }}
+        if (selectedId === "{{ .TeaResData.Id }}") {
+            var dataDiv = document.createElement("div");
+            dataDiv.classList.add("data-container");
+
+            var idParagraph = document.createElement("p");
+            idParagraph.innerHTML = "<strong>追溯码:</strong> " + "{{ .TeaResData.Id }}";
+            dataDiv.appendChild(idParagraph);
+
+            var planetParagraph = document.createElement("p");
+            planetParagraph.innerHTML = "<strong>种植信息:</strong> " + "{{ .TeaResData.Planet }}";
+            dataDiv.appendChild(planetParagraph);
+            var Location = document.createElement("p");
+            Location.innerHTML = "<strong>基地信息:</strong> " + "{{ .TeaResData.Location }}";
+            dataDiv.appendChild(Location);
+
+            var Grower = document.createElement("p");
+            Grower.innerHTML = "<strong>种植者:</strong> " + "{{ .TeaResData.Grower }}";
+            dataDiv.appendChild(Grower);
+            var Species = document.createElement("p");
+            Species.innerHTML = "<strong>品种:</strong> " + "{{ .TeaResData.Species }}";
+            dataDiv.appendChild(Species);
+            var Quarantine = document.createElement("p");
+            Quarantine.innerHTML = "<strong>资质证书:</strong> " + "{{ .TeaResData.Quarantine }}";
+            dataDiv.appendChild(Quarantine);
+            var Packages = document.createElement("p");
+            Packages.innerHTML = "<strong>包装示例:</strong> " + "{{ .TeaResData.Packages }}";
+            dataDiv.appendChild(Packages);
+            var Pick = document.createElement("p");
+            Pick.innerHTML = "<strong>采摘数据:</strong> " + "{{ .TeaResData.Pick }}";
+            dataDiv.appendChild(Pick);
+            var PickTime = document.createElement("p");
+            PickTime.innerHTML = "<strong>采摘时间:</strong> " + "{{ .TeaResData.PickTime }}";
+            dataDiv.appendChild(PickTime);
+            var Picker = document.createElement("p");
+            Picker.innerHTML = "<strong>采摘人:</strong> " + "{{ .TeaResData.Picker }}";
+            dataDiv.appendChild(Picker);
+            var Hash = document.createElement("p");
+            Hash.innerHTML = "<strong>链上Hash:</strong> " + "{{ .TeaResData.Hash }}";
+            dataDiv.appendChild(Hash);
+            dataContainer.appendChild(dataDiv);
+        }{{ else }}
+        {{ end }}
+
+        {{ if .ProductionInfo }}
+        if (selectedId === "{{ .TeaResData.Id }}") {
+            var dataDiv = document.createElement("div");
+            dataDiv.classList.add("data-container");
+
+            var idParagraph = document.createElement("p");
+            idParagraph.innerHTML = "<strong>追溯码:</strong> " + "{{ .ProductionInfo.Id }}";
+            dataDiv.appendChild(idParagraph);
+
+            var planetParagraph = document.createElement("p");
+            planetParagraph.innerHTML = "<strong>生产信息:</strong> " + "{{ .ProductionInfo.Production }}";
+            dataDiv.appendChild(planetParagraph);
+            var Location = document.createElement("p");
+            Location.innerHTML = "<strong>生产时间:</strong> " + "{{ .ProductionInfo.ProductionTime }}";
+            dataDiv.appendChild(Location);
+
+            var Grower = document.createElement("p");
+            Grower.innerHTML = "<strong>生产者:</strong> " + "{{ .ProductionInfo.Producer }}";
+            dataDiv.appendChild(Grower);
+
+            var Hash = document.createElement("p");
+            Hash.innerHTML = "<strong>链上Hash:</strong> " + "{{ .ProductionInfo.Hash }}";
+            dataDiv.appendChild(Hash);
+
+            dataContainer.appendChild(dataDiv);
+        }
+        {{ else }}
+        {{ end }}
+
         {{ if .ProcessInfo }}
         if (selectedId === "{{ .TeaResData.Id }}") {
             var dataDiv = document.createElement("div");
@@ -154,82 +187,73 @@
         }
         {{ else }}
         {{ end }}
+
+        {{ if .LogisInfo }}
+        if (selectedId === "{{ .TeaResData.Id }}") {
+            var dataDiv = document.createElement("div");
+            dataDiv.classList.add("data-container");
+
+            var idParagraph = document.createElement("p");
+            idParagraph.innerHTML = "<strong>追溯码:</strong> " + "{{ .LogisInfo.Id }}";
+            dataDiv.appendChild(idParagraph);
+
+            var planetParagraph = document.createElement("p");
+            planetParagraph.innerHTML = "<strong>路径:</strong> " + "{{ .LogisInfo.Path }}";
+            dataDiv.appendChild(planetParagraph);
+            var Location = document.createElement("p");
+            Location.innerHTML = "<strong>运输方式:</strong> " + "{{ .LogisInfo.LogisWay }}";
+            dataDiv.appendChild(Location);
+
+            var Grower = document.createElement("p");
+            Grower.innerHTML = "<strong>司机:</strong> " + "{{ .LogisInfo.Driver }}";
+            dataDiv.appendChild(Grower);
+            var Species = document.createElement("p");
+            Species.innerHTML = "<strong>物流时间:</strong> " + "{{ .LogisInfo.LogisTime }}";
+            dataDiv.appendChild(Species);
+            var Quarantine = document.createElement("p");
+            Quarantine.innerHTML = "<strong>物流企业:</strong> " + "{{ .LogisInfo.Company }}";
+            dataDiv.appendChild(Quarantine);
+
+            var Hash = document.createElement("p");
+            Hash.innerHTML = "<strong>链上Hash:</strong> " + "{{ .LogisInfo.Hash }}";
+            dataDiv.appendChild(Hash);
+            dataContainer.appendChild(dataDiv);
+        }
+        {{ else }}
+        {{ end }}
+
+        {{ if .StorageInfo }}
+        if (selectedId === "{{ .TeaResData.Id }}") {
+            var dataDiv = document.createElement("div");
+            dataDiv.classList.add("data-container");
+
+            var idParagraph = document.createElement("p");
+            idParagraph.innerHTML = "<strong>追溯码:</strong> " + "{{ .StorageInfo.Id }}";
+            dataDiv.appendChild(idParagraph);
+
+            var planetParagraph = document.createElement("p");
+            planetParagraph.innerHTML = "<strong>仓储信息:</strong> " + "{{ .StorageInfo.Store }}";
+            dataDiv.appendChild(planetParagraph);
+            var Location = document.createElement("p");
+            Location.innerHTML = "<strong>仓储时间:</strong> " + "{{ .StorageInfo.StoreTime }}";
+            dataDiv.appendChild(Location);
+
+            var Grower = document.createElement("p");
+            Grower.innerHTML = "<strong>仓储企业:</strong> " + "{{ .StorageInfo.Company }}";
+            dataDiv.appendChild(Grower);
+
+            var Hash = document.createElement("p");
+            Hash.innerHTML = "<strong>链上Hash:</strong> " + "{{ .StorageInfo.Hash }}";
+            dataDiv.appendChild(Hash);
+            dataContainer.appendChild(dataDiv);
+        }
+        {{ else }}
+        {{ end }}
+
         {{ end }}
     }
 </script>
-<div class="foot1">
-    <div class="main">
-        <div class="footblank">
-            <div class="footblanklist">
-                <img src="">
-                <p class="footblank1">
 
-                </p>
-                <p class="footblank2"></p>
-            </div>
-            <div class="footblanklist">
-                <img src="img/zhen.png">
-                <p class="footblank1">
-                    真品货源
-                </p>
-                <p class="footblank2">正品、优质、放心</p>
-            </div>
-            <div class="footblanklist">
-                <img src="img/tong.png">
-                <p class="footblank1">
-                    数据互通
-                </p>
-                <p class="footblank2">生态数据</p>
-            </div>
-            <div class="footblanklist">
-                <img src="img/yi.png">
-                <p class="footblank1">
-                    数据不可篡改
-                </p>
-                <p class="footblank2">区块链默克尔树、密码学</p>
-            </div>
-            <div class="footblanklist">
-                <img src="img/danbaojiaoyi.png">
-                <p class="footblank1">
-                    区块链溯源
-                </p>
-                <p class="footblank2">交易哈希、区块高度溯源</p>
-            </div>
-        </div>
-        <div class="frendlink">
-            <div class="frendlinkl">
-                <div class="footlinkbox">
-                    <p>区块链</p>
-                    <a href="https://blog.csdn.net/weixin_41303815/article/details/115465777">区块链出块机制</a>
-                    <a href="https://blog.csdn.net/weixin_41303815/article/details/115803249">区块链数据存储</a>
-                    <a href="https://blog.csdn.net/weixin_41303815/category_11139294.html?spm=1001.2014.3001.5482">密码学</a>
-                </div>
-                <div class="footlinkbox">
-                    <p>区块链浏览器</p>
-                    <a href="">区块高度</a>
-                    <a href="">区块信息</a>
-                    <a href="">交易信息</a>
-                </div>
-                <div class="footlinkbox">
-                    <p>智能合约</p>
-                    <a href="https://blog.csdn.net/weixin_41303815/article/details/119328874">上链合约</a>
-                    <a href="https://blog.csdn.net/weixin_41303815/article/details/119328874">查询合约</a>
-                </div>
-                <div class="footlinkbox">
-                    <p>帮助中心</p>
-                    <a href="">联系我们</a>
-                    <a href="https://blog.csdn.net/weixin_41303815">更多资料</a>
-                </div>
-            </div>
-            <div class="frendlinkm"></div>
-            <div class="frendlinkr">
-                <p  class="call"><img src="img/call.png"><span>xxx-xxxx-xxxx</span></p>
-                <p class="email"><img src="img/email.png"><span >xxxx@163.com</span></p>
-
-            </div>
-        </div>
-    </div>
-</div>
 <div style="background: #acacac"></div>
 
     <script>
