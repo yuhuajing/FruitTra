@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>药品追溯管理界面</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/detail.css">
+    <link rel="stylesheet" href="css/zhuisu.css">
+</head>
+<body>
+
+<div class="logosearch">
+    <div class="main">
+        <div class="logosearchL">
+        </div>
+        <div class="logosearchR">
+            <div class="search">
+                <div class="searchtype">
+<!--                    <span ><a href=""> 系统管理</a></span>-->
+                    <span> <a href="">用户管理</a></span>
+<!--                    <span ><a href=""> 管理</a></span>-->
+                    <span> <a href="">溯源管理</a></span>
+<!--                    <span> <a href="">投诉反馈管理</a></span>-->
+                    <!--                   <span> <a href="">数据统计分析</a></span>-->
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main">
+    <p><a href="/">首页</a> > <a>后台管理</a> </p>
+    <div class="dianpu " >
+<!--        <form method="POST" action="/dxxx" class="sui-form form-horizontal" onsubmit="submitForm(event)">-->
+<!--            <div class="dianpumsg">-->
+<!--                <p class="dpname">系统管理</p>-->
+<!--                <div class="pingfen">-->
+<!--                    <p><span> <a href="peizhi.html">系统配置</a></span></p>-->
+<!--                    <p><span> <a href="peizhi.html">系统维护</a></span></p>-->
+<!--                    <p><span> <a href="peizhi.html">系统升级</a></span></p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </form>-->
+
+        <div class="dianpumsg">
+            <p class="dpname">用户管理</p>
+            <div class="pingfen">
+                <form method="POST" action="/approveuser" class="sui-form form-horizontal" onsubmit="submitForm(event)">
+                    <p><span> <input type="submit" value="授权用户" /></span></p>
+                </form>
+                <form method="POST" action="/manageuser" class="sui-form form-horizontal" onsubmit="submitForm(event)">
+                    <p><span> <input type="submit" value="管理用户" /></span></p>            </form>
+<!--                <form method="GET" action="/adminusers" class="sui-form form-horizontal" onsubmit="submitForm(event)">-->
+<!--                    <p><span> <input type="submit" value="Admin账户" /></span></p>            </form>-->
+            </div>
+        </div>
+        <div class="dianpumsg">
+            <p class="dpname">溯源管理</p>
+            <div class="pingfen">
+                <!--                <p><span> <a href="adddrug.html">查看果蔬溯源信息</a></span></p>-->
+                <form method="POST" action="/manageuser" class="sui-form form-horizontal" onsubmit="submitForm(event)">
+                    <p><span> <input type="submit" value="管理溯源信息" /></span></p> </form>
+                <!--                <form method="POST" action="/managedrugs" class="sui-form form-horizontal" onsubmit="submitForm(event)">-->
+                <!--                    <p><span> <input type="submit" value="管理药品信息" /></span></p>            </form>-->
+            </div>
+        </div>
+    </div>
+<!--    <div class="dianpu " >-->
+
+<!--        <div class="dianpumsg">-->
+<!--            <p class="dpname">投诉反馈管理</p>-->
+<!--            <div class="pingfen">-->
+<!--                <form method="POST" action="/managetousu" class="sui-form form-horizontal" onsubmit="submitForm(event)">-->
+<!--                    <p><span> <input type="submit" value="处理投诉" /></span></p>-->
+<!--                </form>-->
+<!--                <form method="Get" action="/alltousu" class="sui-form form-horizontal" onsubmit="submitForm(event)">-->
+<!--                    <p><span> <input type="submit" value="全部投诉" /></span></p>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;        <div class="dianpumsg">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <p class="dpname">数据分析</p>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <div class="pingfen">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <p><span> <a href="shouquan.html">数据分析</a></span></p>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--    </div>-->
+</div>
+<div class="foot1">
+    <div class="main">
+        <div class="footblank">
+            <div class="footblanklist">
+                <img src="">
+                <p class="footblank1">
+
+                </p>
+                <p class="footblank2"></p>
+            </div>
+            <div class="footblanklist">
+                <img src="img/zhen.png">
+                <p class="footblank1">
+                    真品货源
+                </p>
+                <p class="footblank2">正品、优质、放心</p>
+            </div>
+            <div class="footblanklist">
+                <img src="img/tong.png">
+                <p class="footblank1">
+                    数据互通
+                </p>
+                <p class="footblank2">种植户、商家、消费者</p>
+            </div>
+            <div class="footblanklist">
+                <img src="img/yi.png">
+                <p class="footblank1">
+                    数据不可篡改
+                </p>
+                <p class="footblank2">区块链默克尔树、密码学</p>
+            </div>
+            <div class="footblanklist">
+                <img src="img/danbaojiaoyi.png">
+                <p class="footblank1">
+                    区块链溯源
+                </p>
+                <p class="footblank2">交易哈希、区块高度溯源</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

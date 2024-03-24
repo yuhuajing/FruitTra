@@ -1,0 +1,447 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "path",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "logisway",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "logistime",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "driver",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "company",
+				"type": "string"
+			}
+		],
+		"name": "addOrupdateLogissData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "processa",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "processtime",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "processer",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "company",
+				"type": "string"
+			}
+		],
+		"name": "addOrupdateProcessData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "production",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "productiontime",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "producter",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "company",
+				"type": "string"
+			}
+		],
+		"name": "addOrupdateProdData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "store",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "storetime",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "company",
+				"type": "string"
+			}
+		],
+		"name": "addOrupdateStoreData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "planet",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "location",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "grower",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "species",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "quarantine",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "packages",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "pick",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "picktime",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "picker",
+				"type": "string"
+			}
+		],
+		"name": "addOrupdateTeaData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_producer",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_storer",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_logostic",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_process",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_tea",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"name": "tracedata",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "planet",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "location",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "grower",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "species",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "quarantine",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "packages",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "pick",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "picktime",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "picker",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inserttime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "updatetime",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Teatrace.TeaInfo",
+				"name": "tea",
+				"type": "tuple"
+			},
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "process",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "processtime",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "processer",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "company",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inserttime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "updatetime",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Teatrace.processInfo",
+				"name": "process",
+				"type": "tuple"
+			},
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "production",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "productiontime",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "producter",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "company",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inserttime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "updatetime",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Teatrace.productionInfo",
+				"name": "production",
+				"type": "tuple"
+			},
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "store",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "storetime",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "company",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inserttime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "updatetime",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Teatrace.storageInfo",
+				"name": "store",
+				"type": "tuple"
+			},
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "path",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "logisway",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "driver",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "logistime",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "company",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inserttime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "updatetime",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Teatrace.logisInfo",
+				"name": "logis",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

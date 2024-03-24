@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+    <title>登录页面</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="css/webbase.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pages-login.css"/>
+</head>
+
+<body>
+<div class="login-box">
+    <!--head-->
+    <div class="py-container logoArea">
+        <a href="" class="logo"></a>
+    </div>
+    <!--loginArea-->
+    <div class="loginArea" id="loginApp">
+        <div class="py-container login">
+            <div class="loginform">
+                <ul class="sui-nav nav-tabs tab-wraped">
+
+                    <li class="active">
+                        <a href="#profile" data-toggle="tab">
+                            <h3>账户登录</h3>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content tab-wraped">
+
+                    <div id="profile" class="tab-pane  active">
+                        <span v-text="msg"></span>
+                        <form class="sui-form" action="/login"  onsubmit="submitForm(event)">
+                            <div class="input-prepend"><span class="add-on loginname"></span>
+                                <input id="username" type="text" name="username" placeholder="邮箱/用户名/手机号" class="span2 input-xfat"
+                                       v-model="form.username">
+                            </div>
+                            <div class="input-prepend"><span class="add-on loginpwd"></span>
+                                <input id="password" type="password" name="password" placeholder="请输入密码" class="span2 input-xfat"
+                                       v-model="form.password">
+                            </div>
+                            <div class="setting">
+                                <label class="checkbox inline">
+                                    <input name="m1" type="checkbox" value="2" checked="">
+                                    自动登录
+                                </label>
+                                <span class="forget">忘记密码？</span>
+                            </div>
+                            <div class="controls btn-reg">
+                                <input class="sui-btn btn-block btn-xlarge btn-danger" type="submit" value="登录" />
+                            </div>
+                            <div >
+                                <span class="forget">没有账号？<a href="registerUser.html">注册</a></span>
+                            </div>
+                        </form>
+                    </div>
+                    <script>
+                        function submitForm(event) {
+                            event.preventDefault(); // 阻止表单默认提交行为
+                            var form = event.target; // 获取表单元素
+                            var formData = new FormData(form);
+                            fetch('/login', {
+                                method: 'POST',
+                                body: formData
+                            }).then(function(response) {
+                                if (response.ok) {
+                                    response.json().then(function(data) {
+                                        localStorage.clear();
+                                        localStorage.setItem('user', data.data);
+                                        localStorage.setItem('tokens', data.token);
+                                        if (data.type === "admin") {
+                                            fetch('/adminfunc', {
+                                                method: 'POST',
+                                                body: formData
+                                            }).then(function(response) {
+                                                if (response.ok) {
+                                                    response.json().then(function(data) {
+                                                        console.log(data)
+                                                        //var queryParams = new URLSearchParams(data).toString();
+                                                        localStorage.setItem('aname', data.username);
+                                                        localStorage.setItem('aid', data.id);
+                                                        localStorage.setItem('aemail', data.email);
+                                                        localStorage.setItem('aphone', data.phone);
+                                                        localStorage.setItem('aidentity', data.identity);
+                                                        localStorage.setItem('aapprove', data.approved);
+                                                        window.location.href = "/admininter.html";//?"+queryParams;
+                                                    });
+                                                }
+                                            })
+                                            // window.location.href = '/adminfuncs.html';
+                                        } else if (data.type === "planet") {
+                                            console.log("planet")
+                                            fetch('/planetfunc', {
+                                                method: 'POST',
+                                                body: formData
+                                            }).then(function(response) {
+                                                if (response.ok) {
+                                                    response.json().then(function(data) {
+                                                        // var queryParams = new URLSearchParams(data).toString();
+                                                        localStorage.setItem('aname', data.username);
+                                                        localStorage.setItem('aid', data.id);
+                                                        localStorage.setItem('aemail', data.email);
+                                                        localStorage.setItem('aphone', data.phone);
+                                                        localStorage.setItem('aidentity', data.identity);
+                                                        localStorage.setItem('aapprove', data.approved);
+                                                        window.location.href = "/planetadddata.html";//?"+queryParams;
+                                                    });
+                                                }
+                                            })
+                                        } else if (data.type === "pick") {
+                                            fetch('/pickfunc', {
+                                                method: 'POST',
+                                                body: formData
+                                            }).then(function(response) {
+                                                if (response.ok) {
+                                                    response.json().then(function(data) {
+                                                        // var queryParams = new URLSearchParams(data).toString();
+                                                        localStorage.setItem('aname', data.username);
+                                                        localStorage.setItem('aid', data.id);
+                                                        localStorage.setItem('aemail', data.email);
+                                                        localStorage.setItem('aphone', data.phone);
+                                                        localStorage.setItem('aidentity', data.identity);
+                                                        localStorage.setItem('aapprove', data.approved);
+                                                        window.location.href = "/pickadddata.html";//?"+queryParams;
+                                                    });
+                                                }
+                                            })
+                                        } else if (data.type === "process") {
+                                            fetch('/processfunc', {
+                                                method: 'POST',
+                                                body: formData
+                                            }).then(function(response) {
+                                                if (response.ok) {
+                                                    response.json().then(function(data) {
+                                                        // var queryParams = new URLSearchParams(data).toString();
+                                                        localStorage.setItem('aname', data.username);
+                                                        localStorage.setItem('aid', data.id);
+                                                        localStorage.setItem('aemail', data.email);
+                                                        localStorage.setItem('aphone', data.phone);
+                                                        localStorage.setItem('aidentity', data.identity);
+                                                        localStorage.setItem('aapprove', data.approved);
+                                                        window.location.href = "/processdddata.html";//?"+queryParams;
+                                                    });
+                                                }
+                                            })
+                                        }
+                                    });
+                                } else {
+                                    response.json().then(function(data) {
+                                        alert("未注册/未授权用户！！");
+                                    });
+                                }
+                            })
+                                .catch(function(error) {
+                                    console.log(666)
+                                });
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--foot-->
+    <div style="background: #acacac">
+        <div class="main">
+            <div id="footer" class="wrapper">
+                <p>
+                    <a href="http://www.0536goods.top/shop">首页</a>
+                    | <a href="http://huabao.neoceansoft.com/shop/index.php?act=article&amp;article_id=24">招聘英才</a>
+                    | <a href="http://huabao.neoceansoft.com/shop/index.php?act=article&amp;article_id=25">合作及洽谈</a>
+                    | <a href="http://huabao.neoceansoft.com/shop/index.php?act=article&amp;article_id=23">联系我们</a>
+                    | <a href="http://huabao.neoceansoft.com/shop/index.php?act=article&amp;article_id=22">关于我们</a>
+                    | <a href="http://huabao.neoceansoft.com/shop/index.php?act=link">友情链接</a>
+                </p>
+                版权所有 潍坊市商务局 鲁ICP备12002077号 © 2011-2016 All rights reserved <br>
+                地址：潍坊市东风东街6396号阳光大厦8层  <br>
+                电话：0536-8091166 <br>
+                技术支持：山东新海软件股份有限公司  <br>
+                <a href="http://www.0536goods.top/shop/templates/default/home/yyzzxxgs.html">
+                    <img src="http://www.0536goods.top/shop/templates/default/images/yyzzxxgs.jpg">
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</html>
